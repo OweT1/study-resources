@@ -170,10 +170,11 @@ class UnionFind:
         self.size = [1] * n
 
     def find(self, x: int) -> int:
-        while x != self.parents[x]:
-            self.parents[x] = self.parents[self.parents[x]]  # path halving
-            x = self.parents[x]
-        return x
+        if self.parents[x] == x:
+          return x
+
+        self.parents[x] = self.find(self.parents[x]) # full path compression
+        return self.parents[x]
 
     def union(self, x: int, y: int) -> bool:
         p_x, p_y = self.find(x), self.find(y)

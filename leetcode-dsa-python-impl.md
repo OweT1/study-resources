@@ -23,6 +23,7 @@
 - [16. Topological Sort (Kahn's Algorithm / BFS-based)](#16-topological-sort-kahns-algorithm--bfs-based)
 - [17. Monotonic Stack](#17-monotonic-stack)
 - [18. Intervals (Merge / Sort-based)](#18-intervals-merge--sort-based)
+- [Complexity Summary](#complexity-summary)
 
 ---
 
@@ -33,8 +34,13 @@ from collections import Counter
 
 test_string = "abc"
 test_counter = Counter(test_string)
-test_counter  # Output: {"a": 1, "b": 1, "c": 1}
+test_counter  # Output: {"a": 1, "b": 1, "c": 1}
 ```
+
+**Complexity**
+
+- Time: O(n), where n is the length of the input iterable.
+- Space: O(k), where k is the number of distinct elements.
 
 ---
 
@@ -46,10 +52,15 @@ from collections import defaultdict
 test_string = "abca"
 test_counter = defaultdict(int)
 for c in test_string:
-    test_counter[c] += 1
+    test_counter[c] += 1
 
-test_counter  # Output: {"a": 2, "b": 1, "c": 1}
+test_counter  # Output: {"a": 2, "b": 1, "c": 1}
 ```
+
+**Complexity**
+
+- Time: O(n), where n is the length of the input iterable.
+- Space: O(k), where k is the number of distinct keys.
 
 ---
 
@@ -64,10 +75,10 @@ pq = []
 items = [(0, 1), (2, 4), (2, 1), (1, 2), (0, 0)]
 
 for item in items:
-    heapq.heappush(pq, item)
+    heapq.heappush(pq, item)
 
 while pq:
-    heapq.heappop(pq)
+    heapq.heappop(pq)
 
 # Output order: (0,0), (0,1), (1,2), (2,1), (2,4)
 
@@ -75,11 +86,16 @@ while pq:
 
 pq = []
 for item in items:
-    heapq.heappush(pq, (-item[0], -item[1], item))
+    heapq.heappush(pq, (-item[0], -item[1], item))
 
 while pq:
-    heapq.heappop(pq)
+    heapq.heappop(pq)
 ```
+
+**Complexity**
+
+- Time: O(log n) per push/pop; O(n log n) to push and pop all n items.
+- Space: O(n) for the heap.
 
 **Relevant LeetCode Questions**
 
@@ -94,18 +110,23 @@ Take note of not found scenario.
 
 ```python
 def binary_search(nums: list[int], target: int) -> int:
-    l, r = 0, len(nums) - 1
+    l, r = 0, len(nums) - 1
 
-    while l <= r:
-        m = l + ((r - l) >> 1)
-        if nums[m] == target:
-            return m
-        elif nums[m] > target:
-            r = m - 1
-        else:
-            l = m + 1
-    return -1  # not found
+    while l <= r:
+        m = l + ((r - l) >> 1)
+        if nums[m] == target:
+            return m
+        elif nums[m] > target:
+            r = m - 1
+        else:
+            l = m + 1
+    return -1  # not found
 ```
+
+**Complexity**
+
+- Time: O(log n), where n is the length of `nums`.
+- Space: O(1) iterative (an equivalent recursive version would be O(log n) due to the call stack).
 
 **Relevant LeetCode Questions**
 
@@ -118,38 +139,43 @@ def binary_search(nums: list[int], target: int) -> int:
 
 ```python
 class TrieNode:
-    def __init__(self):
-        self.children = {}
-        self.is_end = False
+    def __init__(self):
+        self.children = {}
+        self.is_end = False
 
 class Trie:
-    def __init__(self):
-        self.root = TrieNode()
+    def __init__(self):
+        self.root = TrieNode()
 
-    def insert(self, word: str) -> None:
-        tmp = self.root
-        for c in word:
-            if c not in tmp.children:
-                tmp.children[c] = TrieNode()
-            tmp = tmp.children[c]
-        tmp.is_end = True
+    def insert(self, word: str) -> None:
+        tmp = self.root
+        for c in word:
+            if c not in tmp.children:
+                tmp.children[c] = TrieNode()
+            tmp = tmp.children[c]
+        tmp.is_end = True
 
-    def search(self, word: str) -> bool:
-        tmp = self.root
-        for c in word:
-            if c not in tmp.children:
-                return False
-            tmp = tmp.children[c]
-        return tmp.is_end
+    def search(self, word: str) -> bool:
+        tmp = self.root
+        for c in word:
+            if c not in tmp.children:
+                return False
+            tmp = tmp.children[c]
+        return tmp.is_end
 
-    def starts_with(self, prefix: str) -> bool:
-        tmp = self.root
-        for c in prefix:
-            if c not in tmp.children:
-                return False
-            tmp = tmp.children[c]
-        return True
+    def starts_with(self, prefix: str) -> bool:
+        tmp = self.root
+        for c in prefix:
+            if c not in tmp.children:
+                return False
+            tmp = tmp.children[c]
+        return True
 ```
+
+**Complexity**
+
+- Time: O(L) per `insert`/`search`/`starts_with` call, where L is the length of the word or prefix.
+- Space: O(N · L) in the worst case across all inserted words (N = number of words, L = average word length); each node additionally holds O(alphabet size) children.
 
 **Relevant LeetCode Questions**
 
@@ -165,30 +191,35 @@ class Trie:
 
 class UnionFind:
 
-    def __init__(self, n: int):
-        self.parents = list(range(n))
-        self.size = [1] * n
+    def __init__(self, n: int):
+        self.parents = list(range(n))
+        self.size = [1] * n
 
-    def find(self, x: int) -> int:
+    def find(self, x: int) -> int:
         if self.parents[x] == x:
           return x
 
         self.parents[x] = self.find(self.parents[x]) # full path compression
-        return self.parents[x]
+        return self.parents[x]
 
-    def union(self, x: int, y: int) -> bool:
-        p_x, p_y = self.find(x), self.find(y)
-        if p_x == p_y: return False
+    def union(self, x: int, y: int) -> bool:
+        p_x, p_y = self.find(x), self.find(y)
+        if p_x == p_y: return False
 
-        if self.size[p_x] > self.size[p_y]:
-            self.parents[p_y] = p_x
-            self.size[p_x] += self.size[p_y]
-        else:
-            self.parents[p_x] = p_y
-            self.size[p_y] += self.size[p_x]
+        if self.size[p_x] > self.size[p_y]:
+            self.parents[p_y] = p_x
+            self.size[p_x] += self.size[p_y]
+        else:
+            self.parents[p_x] = p_y
+            self.size[p_y] += self.size[p_x]
 
-        return True
+        return True
 ```
+
+**Complexity**
+
+- Time: O(α(n)) amortized per `find`/`union` call (inverse Ackermann, effectively constant) thanks to path compression combined with union by size.
+- Space: O(n) for the `parents` and `size` arrays.
 
 **Relevant LeetCode Questions**
 
@@ -204,44 +235,49 @@ class UnionFind:
 import heapq
 
 def prims_mst(n: int, edges: list[tuple], start_node: int) -> list[tuple]:
-    mst = []
-    visited = {start_node}
-    neighbours = {i: [] for i in range(n)}
+    mst = []
+    visited = {start_node}
+    neighbours = {i: [] for i in range(n)}
 
-    for u, v, w in edges:  # assume edge is (u, v, w)
-        neighbours[u].append((w, u, v))
-        neighbours[v].append((w, v, u))
+    for u, v, w in edges:  # assume edge is (u, v, w)
+        neighbours[u].append((w, u, v))
+        neighbours[v].append((w, v, u))
 
-    pq = neighbours[start_node][:]
-    heapq.heapify(pq)
+    pq = neighbours[start_node][:]
+    heapq.heapify(pq)
 
-    while pq and len(visited) < n:
-        w, u, v = heapq.heappop(pq)
-        if v in visited:
-            continue
+    while pq and len(visited) < n:
+        w, u, v = heapq.heappop(pq)
+        if v in visited:
+            continue
 
-        visited.add(v)
-        mst.append((u, v, w))
+        visited.add(v)
+        mst.append((u, v, w))
 
-        for edge in neighbours.get(v, []):
-            if edge[2] not in visited:
-                heapq.heappush(pq, edge)
+        for edge in neighbours.get(v, []):
+            if edge[2] not in visited:
+                heapq.heappush(pq, edge)
 
-    return mst
+    return mst
 
 def kruskals_mst(n: int, edges: list[tuple]) -> list[tuple]:
-    uf = UnionFind(n)  # from section 6
-    sorted_edges = sorted(edges, key=lambda x: x[2])  # assume edge is (u, v, w)
-    mst = []
+    uf = UnionFind(n)  # from section 6
+    sorted_edges = sorted(edges, key=lambda x: x[2])  # assume edge is (u, v, w)
+    mst = []
 
-    for u, v, w in sorted_edges:
-        if uf.union(u, v):
-            mst.append((u, v, w))
-            if len(mst) == n - 1:
-                break
+    for u, v, w in sorted_edges:
+        if uf.union(u, v):
+            mst.append((u, v, w))
+            if len(mst) == n - 1:
+                break
 
-    return mst
+    return mst
 ```
+
+**Complexity**
+
+- Prim's: Time O(E log E) (each edge may be pushed/popped from the heap once); Space O(V + E) for the adjacency map and heap.
+- Kruskal's: Time O(E log E), dominated by sorting the edges (the DSU operations add only O(E · α(V))); Space O(V + E) — O(V) for the DSU arrays, O(E) for the edge list.
 
 **Relevant LeetCode Questions**
 
@@ -259,28 +295,33 @@ import heapq
 import math
 
 def dijkstra(n: int, edges: list[tuple], src: int) -> list[int]:
-    dists = [math.inf] * n
-    dists[src] = 0
-    neighbours = {}
+    dists = [math.inf] * n
+    dists[src] = 0
+    neighbours = {}
 
-    for u, v, w in edges:  # assume edge is (u, v, w)
-        if u not in neighbours:
-            neighbours[u] = {}
-        neighbours[u][v] = w
+    for u, v, w in edges:  # assume edge is (u, v, w)
+        if u not in neighbours:
+            neighbours[u] = {}
+        neighbours[u][v] = w
 
-    pq = [(0, src)]
-    while pq:
-        dist, node = heapq.heappop(pq)
-        if node not in neighbours or dist > dists[node]:
-            continue
+    pq = [(0, src)]
+    while pq:
+        dist, node = heapq.heappop(pq)
+        if node not in neighbours or dist > dists[node]:
+            continue
 
-        for nb, w in neighbours[node].items():
-            if dist + w < dists[nb]:
-                dists[nb] = dist + w
-                heapq.heappush(pq, (dists[nb], nb))
-    return dists
+        for nb, w in neighbours[node].items():
+            if dist + w < dists[nb]:
+                dists[nb] = dist + w
+                heapq.heappush(pq, (dists[nb], nb))
+    return dists
 
 ```
+
+**Complexity**
+
+- Time: O(E log V) using a binary heap (each edge can trigger a heap push/pop, each O(log V)).
+- Space: O(V + E) for the adjacency structure, distances array, and heap.
 
 **Relevant LeetCode Questions**
 
@@ -295,13 +336,18 @@ def dijkstra(n: int, edges: list[tuple], src: int) -> list[int]:
 ```python
 
 def kadane(nums: list[int]) -> int:
-    curr = res = nums[0]
-    for num in nums[1:]:
-        curr = max(num, curr + num)
-        res = max(res, curr)
-    return res
+    curr = res = nums[0]
+    for num in nums[1:]:
+        curr = max(num, curr + num)
+        res = max(res, curr)
+    return res
 
 ```
+
+**Complexity**
+
+- Time: O(n), a single pass over `nums`.
+- Space: O(1), only two running variables are kept.
 
 **Relevant LeetCode Questions**
 
@@ -317,31 +363,36 @@ def kadane(nums: list[int]) -> int:
 from __future__ import annotations
 
 class Node:
-    def __init__(self, val: int, next: Node | None = None):
-        self.val = val
-        self.next = next
+    def __init__(self, val: int, next: Node | None = None):
+        self.val = val
+        self.next = next
 
 # Pattern A: find the middle node (LC 876)
 
 def find_middle(head: Node) -> Node:
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-    return slow
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow
 
 # Pattern B: cycle detection (LC 141)
 
 def has_cycle(head: Node) -> bool:
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-        if slow == fast:
-            return True
-    return False
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
 
 ```
+
+**Complexity**
+
+- Time: O(n) for both patterns — the fast pointer visits each node a bounded number of times, and in the cycle case the pointers meet within one lap of the cycle.
+- Space: O(1), only two pointers are used.
 
 **Relevant LeetCode Questions**
 
@@ -380,7 +431,11 @@ def bfs(start: int, graph: dict[int, list[int]]) -> list[int]:
 - `deque.popleft()` gives O(1) queue removal; using a normal list with `pop(0)` would be O(n).
 - Mark nodes visited **when enqueuing**, not when dequeuing. This prevents the same node from being added to the queue multiple times.
 - This is the graph form of BFS. For a grid, the same queue pattern applies, but you additionally check bounds and neighboring cells.
-- Time: O(V + E); space: O(V).
+
+**Complexity**
+
+- Time: O(V + E), where V is the number of nodes and E is the number of edges.
+- Space: O(V) for the visited set and queue.
 
 **Relevant LeetCode Questions**
 
@@ -439,7 +494,11 @@ def dfs_iterative(start: int, graph: dict[int, list[int]]) -> list[int]:
 - Recursive DFS needs a `visited` set to avoid cycles.
 - Iterative DFS replaces the call stack with an explicit Python list used as a stack (`append`/`pop`).
 - Marking nodes visited when pushing them prevents duplicates.
-- Time: O(V + E); space: O(V), including recursion/stack and `visited`.
+
+**Complexity**
+
+- Time: O(V + E), where V is the number of nodes and E is the number of edges.
+- Space: O(V) — recursion stack (or explicit stack) plus the `visited` set.
 
 **Relevant LeetCode Questions**
 
@@ -484,6 +543,11 @@ def backtrack_subsets(nums: list[int]) -> list[list[int]]:
 - `path.copy()` is required when storing a result; otherwise every entry in `results` would refer to the same mutable list.
 - The original template used `bfs()` even though this is a depth-first recursive search, and its base case/return value did not actually enumerate the choices.
 - This example generates `2^n` subsets, so the output itself is already O(2^n).
+
+**Complexity**
+
+- Time: O(2^n · n) — there are 2^n subsets, and each one costs O(n) to copy into `results` (often written as O(2^n) if the copy cost is ignored).
+- Space: O(n) for the recursion depth / `path`, excluding the output; O(2^n · n) if the stored output is counted.
 
 **Relevant LeetCode Questions**
 
@@ -550,9 +614,14 @@ def dp_2d_template(grid: list[list[int]]) -> int:
 **Implementation notes**
 
 - The original stubs were intentionally too abstract to be executable because the recurrence depends on the problem. These two examples make the templates concrete while showing the two common shapes.
-- 1D DP above: `dp[i]` is the Fibonacci value at `i`, derived from the two previous states. Time O(n), space O(n).
-- 2D DP above: `dp[r][c]` is the minimum cost to reach cell `(r, c)` from the top-left, using only up/left moves. Time O(rows × cols), space O(rows × cols).
+- 1D DP above: `dp[i]` is the Fibonacci value at `i`, derived from the two previous states.
+- 2D DP above: `dp[r][c]` is the minimum cost to reach cell `(r, c)` from the top-left, using only up/left moves.
 - In actual LeetCode problems, the most important part is usually finding the correct **state definition and transition**, not memorizing a particular code template.
+
+**Complexity**
+
+- 1D DP (Fibonacci-style): Time O(n); Space O(n) as written (can be reduced to O(1) by keeping only the last two values).
+- 2D DP (min path sum): Time O(rows × cols); Space O(rows × cols) as written (can be reduced to O(cols) with a rolling 1D array).
 
 **Relevant LeetCode Questions**
 
@@ -595,7 +664,12 @@ def longest_unique_substring(s: str) -> int:
 - The original template referenced an undefined `condition` and `res`, so it was not executable.
 - A sliding window maintains a valid range `[l, r]`. Expand `r`; when the window becomes invalid, move `l` until the constraint is restored.
 - In this example, the window must contain no duplicate characters. The `while` loop removes characters from the left until the new character can be included.
-- Each character enters and leaves the set at most once, giving O(n) time and O(min(n, alphabet size)) space.
+- Each character enters and leaves the set at most once, giving O(n) time.
+
+**Complexity**
+
+- Time: O(n), where n is the length of `s` — each character is added and removed from `seen` at most once.
+- Space: O(min(n, Σ)), where Σ is the alphabet/character-set size, for the `seen` set.
 
 **Relevant LeetCode Questions**
 
@@ -646,7 +720,11 @@ def topo_sort(n: int, edges: list[tuple[int, int]]) -> list[int]:
   - Initializing indegrees from `in_deg.items()` omitted isolated nodes and nodes that only appear as sources.
   - There was no cycle check.
 - If fewer than `n` nodes are processed, the graph contains a directed cycle.
-- Time: O(V + E); space: O(V + E).
+
+**Complexity**
+
+- Time: O(V + E), where V is the number of nodes and E is the number of edges.
+- Space: O(V + E) for the adjacency list, in-degree array, and queue.
 
 **Relevant LeetCode Questions**
 
@@ -683,6 +761,11 @@ def next_greater_elements(nums: list[int]) -> list[int]:
 - Each index is pushed once and popped once, so the total work is O(n), despite the nested `while` loop.
 - This is the core pattern behind "next greater/smaller", daily temperatures, stock span, and histogram problems.
 
+**Complexity**
+
+- Time: O(n) — amortized, since each index is pushed and popped at most once despite the nested `while` loop.
+- Space: O(n) for the stack and the result array.
+
 **Relevant LeetCode Questions**
 
 - [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
@@ -717,7 +800,11 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
 - Sort intervals by start time first. After sorting, only the last merged interval can overlap the current interval.
 - The original implementation used `interval[0] < output[-1][1]`. Using `<=` also merges touching intervals such as `[1, 2]` and `[2, 3]`, which is the standard interpretation for [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/).
 - The original version also used `pop()` unnecessarily and could mutate the caller's input through `output.append(interval)`. The implementation above copies the first interval and creates new merged intervals.
-- Time: O(n log n) for sorting; merge pass is O(n). Extra space is O(n) for the output.
+
+**Complexity**
+
+- Time: O(n log n), dominated by the initial sort; the merge pass itself is O(n).
+- Space: O(n) for the sorted copy and the output list (sorting itself typically adds O(log n) to O(n) extra space, depending on implementation).
 
 **Relevant LeetCode Questions**
 
@@ -727,5 +814,30 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
 - [253. Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/)
 - [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
 - [1288. Remove Covered Intervals](https://leetcode.com/problems/remove-covered-intervals/)
+
+---
+
+## Complexity Summary
+
+| # | Pattern | Time | Space |
+|---|---|---|---|
+| 1 | Counter | O(n) | O(k) |
+| 2 | Default Dictionary | O(n) | O(k) |
+| 3 | Heaps / Priority Queue | O(n log n) | O(n) |
+| 4 | Binary Search | O(log n) | O(1) |
+| 5 | Trie | O(L) per op | O(N · L) |
+| 6 | Union Find | O(α(n)) per op | O(n) |
+| 7 | Prim's / Kruskal's (MST) | O(E log E) | O(V + E) |
+| 8 | Dijkstra's Algorithm | O(E log V) | O(V + E) |
+| 9 | Kadane's Algorithm | O(n) | O(1) |
+| 10 | Slow and Fast Pointer | O(n) | O(1) |
+| 11 | BFS | O(V + E) | O(V) |
+| 12 | DFS | O(V + E) | O(V) |
+| 13 | Backtracking (subsets) | O(2^n · n) | O(n) |
+| 14 | Dynamic Programming | O(n) / O(rows × cols) | O(n) / O(rows × cols) |
+| 15 | Sliding Window | O(n) | O(min(n, Σ)) |
+| 16 | Topological Sort (Kahn's) | O(V + E) | O(V + E) |
+| 17 | Monotonic Stack | O(n) | O(n) |
+| 18 | Intervals (Merge) | O(n log n) | O(n) |
 
 ---

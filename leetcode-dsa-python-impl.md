@@ -23,6 +23,7 @@
 - [16. Topological Sort (Kahn's Algorithm / BFS-based)](#16-topological-sort-kahns-algorithm--bfs-based)
 - [17. Monotonic Stack](#17-monotonic-stack)
 - [18. Intervals (Merge / Sort-based)](#18-intervals-merge--sort-based)
+- [19. Binary Indexed Tree (Fenwick Tree)](#19-binary-indexed-tree-fenwick-tree)
 - [Complexity Summary](#complexity-summary)
 
 ---
@@ -817,6 +818,71 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
 
 ---
 
+## 19. Binary Indexed Tree (Fenwick Tree)
+
+```python
+class BIT:
+    """1-indexed Binary Indexed Tree (Fenwick Tree) for prefix sums."""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.tree = [0] * (n + 1)
+
+    def update(self, i: int, delta: int) -> None:
+        """Add `delta` to the value at index i (1-indexed)."""
+        while i <= self.n:
+            self.tree[i] += delta
+            i += i & (-i)  # move to next index that covers i
+
+    def prefix_sum(self, i: int) -> int:
+        """Return sum of values in range [1, i] (1-indexed, inclusive)."""
+        total = 0
+        while i > 0:
+            total += self.tree[i]
+            i -= i & (-i)  # move to parent range
+        return total
+
+    def range_sum(self, l: int, r: int) -> int:
+        """Return sum of values in range [l, r] (1-indexed, inclusive)."""
+        return self.prefix_sum(r) - self.prefix_sum(l - 1)
+
+    @classmethod
+    def from_array(cls, nums: list[int]) -> "BIT":
+        """Build a BIT from a 0-indexed array in O(n) time."""
+        bit = cls(len(nums))
+        for i, num in enumerate(nums, start=1):
+            bit.tree[i] += num
+            j = i + (i & (-i))
+            if j <= bit.n:
+                bit.tree[j] += bit.tree[i]
+        return bit
+```
+
+**Implementation notes**
+
+- A BIT (a.k.a. Fenwick Tree) stores partial sums indexed by the lowest set bit of `i`, using `i & (-i)` to isolate it. This lets both `update` and `prefix_sum` walk O(log n) nodes instead of touching every element.
+- The tree is conventionally **1-indexed** — index 0 is unused — because `i & (-i)` would be `0` for `i = 0`, causing an infinite loop.
+- `update(i, delta)` climbs **up** the tree, adding `delta` to every node whose range covers index `i`, by repeatedly adding the lowest set bit (`i += i & (-i)`).
+- `prefix_sum(i)` climbs **down**, accumulating the value at each node that partially covers `[1, i]`, by repeatedly removing the lowest set bit (`i -= i & (-i)`).
+- `range_sum(l, r)` follows from `prefix_sum(r) - prefix_sum(l - 1)`, the same idea as a 1D prefix-sum array, but each side supports O(log n) point updates.
+- `from_array` builds the whole tree in O(n) by pushing each node's accumulated value up to its immediate parent, instead of calling `update` n times (which would cost O(n log n)).
+- BITs are the go-to structure when you need **both** point updates and prefix/range sum queries efficiently; if updates are range-based instead of point-based, a variant using two BITs (or a segment tree with lazy propagation) is typically used instead.
+
+**Complexity**
+
+- Time: O(log n) per `update` and per `prefix_sum`/`range_sum` query; O(n) to build via `from_array` (O(n log n) if built by calling `update` n times).
+- Space: O(n) for the `tree` array.
+
+**Relevant LeetCode Questions**
+
+- [307. Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)
+- [315. Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)
+- [327. Count of Range Sum](https://leetcode.com/problems/count-of-range-sum/)
+- [493. Reverse Pairs](https://leetcode.com/problems/reverse-pairs/)
+- [1409. Queries on a Permutation With Key](https://leetcode.com/problems/queries-on-a-permutation-with-key/)
+
+---
+
 ## Complexity Summary
 
 | # | Pattern | Time | Space |
@@ -839,5 +905,6 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
 | 16 | Topological Sort (Kahn's) | O(V + E) | O(V + E) |
 | 17 | Monotonic Stack | O(n) | O(n) |
 | 18 | Intervals (Merge) | O(n log n) | O(n) |
+| 19 | Binary Indexed Tree | O(log n) per op | O(n) |
 
 ---

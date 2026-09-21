@@ -100,8 +100,9 @@ while pq:
 
 **Relevant LeetCode Questions**
 
-- [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/)
-- [2402. Meeting Rooms III](https://leetcode.com/problems/meeting-rooms-iii/)
+- Easy: [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/)
+- Medium: [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/)
+- Hard: [2402. Meeting Rooms III](https://leetcode.com/problems/meeting-rooms-iii/)
 
 ---
 
@@ -131,8 +132,10 @@ def binary_search(nums: list[int], target: int) -> int:
 
 **Relevant LeetCode Questions**
 
-- [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
-- [875. Koko Eating Bananas (binary search on answer)](https://leetcode.com/problems/koko-eating-bananas/)
+- Medium: [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+- Medium: [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+- Medium: [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/)
+- Hard: [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
 
 ---
 
@@ -180,9 +183,9 @@ class Trie:
 
 **Relevant LeetCode Questions**
 
-- [208. Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
-- [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
-- [212. Word Search II](https://leetcode.com/problems/word-search-ii/)
+- Medium: [208. Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
+- Medium: [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
+- Medium: [212. Word Search II](https://leetcode.com/problems/word-search-ii/)
 
 ---
 
@@ -224,8 +227,8 @@ class UnionFind:
 
 **Relevant LeetCode Questions**
 
-- [684. Redundant Connection](https://leetcode.com/problems/redundant-connection/)
-- [721. Accounts Merge](https://leetcode.com/problems/accounts-merge/)
+- Medium: [684. Redundant Connection](https://leetcode.com/problems/redundant-connection/)
+- Medium: [721. Accounts Merge](https://leetcode.com/problems/accounts-merge/)
 
 ---
 
@@ -282,10 +285,10 @@ def kruskals_mst(n: int, edges: list[tuple]) -> list[tuple]:
 
 **Relevant LeetCode Questions**
 
-- [1135. Connecting Cities With Minimum Cost](https://leetcode.com/problems/connecting-cities-with-minimum-cost/)
-- [1168. Optimize Water Distribution in a Village](https://leetcode.com/problems/optimize-water-distribution-in-a-village/)
-- [1489. Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/)
-- [1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
+- Medium: [1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
+- Hard: [1489. Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/)
+- Premium: [1135. Connecting Cities With Minimum Cost](https://leetcode.com/problems/connecting-cities-with-minimum-cost/)
+- Premium: [1168. Optimize Water Distribution in a Village](https://leetcode.com/problems/optimize-water-distribution-in-a-village/)
 
 ---
 
@@ -326,9 +329,9 @@ def dijkstra(n: int, edges: list[tuple], src: int) -> list[int]:
 
 **Relevant LeetCode Questions**
 
-- [743. Network Delay Time](https://leetcode.com/problems/network-delay-time/)
-- [778. Swim in Rising Water (https://leetcode.com/problems/swim-in-rising-water/)](https://leetcode.com/problems/swim-in-rising-water/)
-- [787. Cheapest Flights Within K Stops (variant / modified Dijkstra or BFS)](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
+- Medium: [743. Network Delay Time](https://leetcode.com/problems/network-delay-time/)
+- Medium: [787. Cheapest Flights Within K Stops (variant / modified Dijkstra or BFS)](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
+- Hard: [778. Swim in Rising Water](https://leetcode.com/problems/swim-in-rising-water/)
 
 ---
 
@@ -352,8 +355,9 @@ def kadane(nums: list[int]) -> int:
 
 **Relevant LeetCode Questions**
 
-- [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
-- [152. Maximum Product Subarray (modified Kadane)](https://leetcode.com/problems/maximum-product-subarray/)
+- Medium: [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+- Medium: [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
+- Medium: [918. Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray/)
 
 ---
 
@@ -397,10 +401,11 @@ def has_cycle(head: Node) -> bool:
 
 **Relevant LeetCode Questions**
 
-- [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
-- [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
-- [202. Happy Number](https://leetcode.com/problems/happy-number/)
-- [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
+- Easy: [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+- Easy: [202. Happy Number](https://leetcode.com/problems/happy-number/)
+- Easy: [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
+- Medium: [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
+- Medium: [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
 
 ---
 
@@ -440,13 +445,12 @@ def bfs(start: int, graph: dict[int, list[int]]) -> list[int]:
 
 **Relevant LeetCode Questions**
 
-- [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
-- [127. Word Ladder](https://leetcode.com/problems/word-ladder/)
-- [200. Number of Islands](https://leetcode.com/problems/number-of-islands/)
-- [207. Course Schedule](https://leetcode.com/problems/course-schedule/)
-- [542. 01 Matrix](https://leetcode.com/problems/01-matrix/)
-- [994. Rotting Oranges](https://leetcode.com/problems/rotting-oranges/)
-- [1091. Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/)
+- Medium: [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+- Medium: [200. Number of Islands](https://leetcode.com/problems/number-of-islands/)
+- Medium: [542. 01 Matrix](https://leetcode.com/problems/01-matrix/)
+- Medium: [994. Rotting Oranges](https://leetcode.com/problems/rotting-oranges/)
+- Medium: [1091. Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/)
+- Hard: [127. Word Ladder](https://leetcode.com/problems/word-ladder/)
 
 ---
 
@@ -503,12 +507,13 @@ def dfs_iterative(start: int, graph: dict[int, list[int]]) -> list[int]:
 
 **Relevant LeetCode Questions**
 
-- [200. Number of Islands](https://leetcode.com/problems/number-of-islands/)
-- [133. Clone Graph](https://leetcode.com/problems/clone-graph/)
-- [130. Surrounded Regions](https://leetcode.com/problems/surrounded-regions/)
-- [494. Target Sum](https://leetcode.com/problems/target-sum/)
-- [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)
-- [690. Employee Importance](https://leetcode.com/problems/employee-importance/)
+- Easy: [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)
+- Medium: [130. Surrounded Regions](https://leetcode.com/problems/surrounded-regions/)
+- Medium: [133. Clone Graph](https://leetcode.com/problems/clone-graph/)
+- Medium: [494. Target Sum](https://leetcode.com/problems/target-sum/)
+- Medium: [690. Employee Importance](https://leetcode.com/problems/employee-importance/)
+- Hard: [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+- Premium: [690. Employee Importance](https://leetcode.com/problems/employee-importance/)
 
 ---
 
@@ -552,14 +557,14 @@ def backtrack_subsets(nums: list[int]) -> list[list[int]]:
 
 **Relevant LeetCode Questions**
 
-- [39. Combination Sum](https://leetcode.com/problems/combination-sum/)
-- [46. Permutations](https://leetcode.com/problems/permutations/)
-- [51. N-Queens](https://leetcode.com/problems/n-queens/)
-- [78. Subsets](https://leetcode.com/problems/subsets/)
-- [79. Word Search](https://leetcode.com/problems/word-search/)
-- [90. Subsets II](https://leetcode.com/problems/subsets-ii/)
-- [131. Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/)
-- [216. Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)
+- Medium: [39. Combination Sum](https://leetcode.com/problems/combination-sum/)
+- Medium: [46. Permutations](https://leetcode.com/problems/permutations/)
+- Medium: [78. Subsets](https://leetcode.com/problems/subsets/)
+- Medium: [79. Word Search](https://leetcode.com/problems/word-search/)
+- Medium: [90. Subsets II](https://leetcode.com/problems/subsets-ii/)
+- Medium: [131. Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/)
+- Medium: [216. Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)
+- Hard: [51. N-Queens](https://leetcode.com/problems/n-queens/)
 
 ---
 
@@ -626,17 +631,16 @@ def dp_2d_template(grid: list[list[int]]) -> int:
 
 **Relevant LeetCode Questions**
 
-- [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
-- [62. Unique Paths](https://leetcode.com/problems/unique-paths/)
-- [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-- [139. Word Break](https://leetcode.com/problems/word-break/)
-- [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
-- [322. Coin Change](https://leetcode.com/problems/coin-change/)
-- [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)
-- [494. Target Sum](https://leetcode.com/problems/target-sum/)
-- [518. Coin Change II](https://leetcode.com/problems/coin-change-ii/)
-- [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
-- [1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
+- Easy: [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+- Easy: [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+- Medium: [62. Unique Paths](https://leetcode.com/problems/unique-paths/)
+- Medium: [139. Word Break](https://leetcode.com/problems/word-break/)
+- Medium: [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
+- Medium: [322. Coin Change](https://leetcode.com/problems/coin-change/)
+- Medium: [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)
+- Medium: [494. Target Sum](https://leetcode.com/problems/target-sum/)
+- Medium: [518. Coin Change II](https://leetcode.com/problems/coin-change-ii/)
+- Medium: [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
 
 ---
 
@@ -674,12 +678,12 @@ def longest_unique_substring(s: str) -> int:
 
 **Relevant LeetCode Questions**
 
-- [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-- [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
-- [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
-- [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
-- [567. Permutation in String](https://leetcode.com/problems/permutation-in-string/)
-- [1004. Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)
+- Medium: [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+- Medium: [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+- Medium: [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
+- Medium: [567. Permutation in String](https://leetcode.com/problems/permutation-in-string/)
+- Medium: [1004. Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)
+- Hard: [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
 
 ---
 
@@ -729,11 +733,11 @@ def topo_sort(n: int, edges: list[tuple[int, int]]) -> list[int]:
 
 **Relevant LeetCode Questions**
 
-- [207. Course Schedule](https://leetcode.com/problems/course-schedule/)
-- [210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
-- [269. Alien Dictionary](https://leetcode.com/problems/alien-dictionary/)
-- [802. Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/)
-- [1136. Parallel Courses](https://leetcode.com/problems/parallel-courses/)
+- Medium: [207. Course Schedule](https://leetcode.com/problems/course-schedule/)
+- Medium: [210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
+- Medium: [802. Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/)
+- Premium: [269. Alien Dictionary](https://leetcode.com/problems/alien-dictionary/)
+- Premium: [1136. Parallel Courses](https://leetcode.com/problems/parallel-courses/)
 
 ---
 
@@ -769,11 +773,11 @@ def next_greater_elements(nums: list[int]) -> list[int]:
 
 **Relevant LeetCode Questions**
 
-- [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
-- [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)
-- [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/)
-- [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
-- [901. Online Stock Span](https://leetcode.com/problems/online-stock-span/)
+- Easy: [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/)
+- Medium: [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
+- Medium: [901. Online Stock Span](https://leetcode.com/problems/online-stock-span/)
+- Hard: [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
+- Hard: [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)
 
 ---
 
@@ -809,12 +813,12 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
 
 **Relevant LeetCode Questions**
 
-- [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
-- [57. Insert Interval](https://leetcode.com/problems/insert-interval/)
-- [252. Meeting Rooms](https://leetcode.com/problems/meeting-rooms/)
-- [253. Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/)
-- [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
-- [1288. Remove Covered Intervals](https://leetcode.com/problems/remove-covered-intervals/)
+- Medium: [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+- Medium: [57. Insert Interval](https://leetcode.com/problems/insert-interval/)
+- Medium: [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
+- Medium: [1288. Remove Covered Intervals](https://leetcode.com/problems/remove-covered-intervals/)
+- Premium: [252. Meeting Rooms](https://leetcode.com/problems/meeting-rooms/)
+- Premium: [253. Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/)
 
 ---
 
@@ -875,36 +879,36 @@ class BIT:
 
 **Relevant LeetCode Questions**
 
-- [307. Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)
-- [315. Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)
-- [327. Count of Range Sum](https://leetcode.com/problems/count-of-range-sum/)
-- [493. Reverse Pairs](https://leetcode.com/problems/reverse-pairs/)
-- [1409. Queries on a Permutation With Key](https://leetcode.com/problems/queries-on-a-permutation-with-key/)
+- Medium: [307. Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)
+- Medium: [1409. Queries on a Permutation With Key](https://leetcode.com/problems/queries-on-a-permutation-with-key/)
+- Hard: [315. Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)
+- Hard: [327. Count of Range Sum](https://leetcode.com/problems/count-of-range-sum/)
+- Hard: [493. Reverse Pairs](https://leetcode.com/problems/reverse-pairs/)
 
 ---
 
 ## Complexity Summary
 
-| # | Pattern | Time | Space |
-|---|---|---|---|
-| 1 | Counter | O(n) | O(k) |
-| 2 | Default Dictionary | O(n) | O(k) |
-| 3 | Heaps / Priority Queue | O(n log n) | O(n) |
-| 4 | Binary Search | O(log n) | O(1) |
-| 5 | Trie | O(L) per op | O(N · L) |
-| 6 | Union Find | O(α(n)) per op | O(n) |
-| 7 | Prim's / Kruskal's (MST) | O(E log E) | O(V + E) |
-| 8 | Dijkstra's Algorithm | O(E log V) | O(V + E) |
-| 9 | Kadane's Algorithm | O(n) | O(1) |
-| 10 | Slow and Fast Pointer | O(n) | O(1) |
-| 11 | BFS | O(V + E) | O(V) |
-| 12 | DFS | O(V + E) | O(V) |
-| 13 | Backtracking (subsets) | O(2^n · n) | O(n) |
-| 14 | Dynamic Programming | O(n) / O(rows × cols) | O(n) / O(rows × cols) |
-| 15 | Sliding Window | O(n) | O(min(n, Σ)) |
-| 16 | Topological Sort (Kahn's) | O(V + E) | O(V + E) |
-| 17 | Monotonic Stack | O(n) | O(n) |
-| 18 | Intervals (Merge) | O(n log n) | O(n) |
-| 19 | Binary Indexed Tree | O(log n) per op | O(n) |
+| #   | Pattern                   | Time                  | Space                 |
+| --- | ------------------------- | --------------------- | --------------------- |
+| 1   | Counter                   | O(n)                  | O(k)                  |
+| 2   | Default Dictionary        | O(n)                  | O(k)                  |
+| 3   | Heaps / Priority Queue    | O(n log n)            | O(n)                  |
+| 4   | Binary Search             | O(log n)              | O(1)                  |
+| 5   | Trie                      | O(L) per op           | O(N · L)              |
+| 6   | Union Find                | O(α(n)) per op        | O(n)                  |
+| 7   | Prim's / Kruskal's (MST)  | O(E log E)            | O(V + E)              |
+| 8   | Dijkstra's Algorithm      | O(E log V)            | O(V + E)              |
+| 9   | Kadane's Algorithm        | O(n)                  | O(1)                  |
+| 10  | Slow and Fast Pointer     | O(n)                  | O(1)                  |
+| 11  | BFS                       | O(V + E)              | O(V)                  |
+| 12  | DFS                       | O(V + E)              | O(V)                  |
+| 13  | Backtracking (subsets)    | O(2^n · n)            | O(n)                  |
+| 14  | Dynamic Programming       | O(n) / O(rows × cols) | O(n) / O(rows × cols) |
+| 15  | Sliding Window            | O(n)                  | O(min(n, Σ))          |
+| 16  | Topological Sort (Kahn's) | O(V + E)              | O(V + E)              |
+| 17  | Monotonic Stack           | O(n)                  | O(n)                  |
+| 18  | Intervals (Merge)         | O(n log n)            | O(n)                  |
+| 19  | Binary Indexed Tree       | O(log n) per op       | O(n)                  |
 
 ---

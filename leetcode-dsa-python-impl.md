@@ -331,7 +331,7 @@ def dijkstra(n: int, edges: list[tuple], src: int) -> list[int]:
 **Relevant LeetCode Questions**
 
 - Medium: [743. Network Delay Time](https://leetcode.com/problems/network-delay-time/)
-- Medium: [787. Cheapest Flights Within K Stops (variant / modified Dijkstra or BFS)](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
+- Medium: [787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
 - Hard: [778. Swim in Rising Water](https://leetcode.com/problems/swim-in-rising-water/)
 
 ---

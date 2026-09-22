@@ -25,6 +25,7 @@
 - [18. Intervals (Merge / Sort-based)](#18-intervals-merge--sort-based)
 - [19. Binary Indexed Tree (Fenwick Tree)](#19-binary-indexed-tree-fenwick-tree)
 - [Complexity Summary](#complexity-summary)
+- [Practice Resources](#practice-resources)
 
 ---
 
@@ -912,3 +913,11 @@ class BIT:
 | 19  | Binary Indexed Tree       | O(log n) per op       | O(n)                  |
 
 ---
+
+## Practice Resources
+
+To get started with leetcode-style preparation, check out the following resources:
+
+- Neetcode 150 (https://neetcode.io/practice/practice/neetcode150 / https://leetcode.com/problem-list/plakya4j/)
+- Grind 75 (https://www.techinterviewhandbook.org/grind75/ / https://leetcode.com/problem-list/rab78cw1/)
+- Contest Questions with rating (https://zerotrac.github.io/leetcode_problem_rating/#/)

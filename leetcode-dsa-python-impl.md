@@ -24,6 +24,7 @@
 - [17. Monotonic Stack](#17-monotonic-stack)
 - [18. Intervals (Merge / Sort-based)](#18-intervals-merge--sort-based)
 - [19. Binary Indexed Tree (Fenwick Tree)](#19-binary-indexed-tree-fenwick-tree)
+- [20. Boyer-Moore Majority Voting](#20-boyer-moore-majority-voting)
 - [Complexity Summary](#complexity-summary)
 - [Practice Resources](#practice-resources)
 
@@ -884,6 +885,35 @@ class BIT:
 - Hard: [315. Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)
 - Hard: [327. Count of Range Sum](https://leetcode.com/problems/count-of-range-sum/)
 - Hard: [493. Reverse Pairs](https://leetcode.com/problems/reverse-pairs/)
+
+---
+
+## 20. Boyer-Moore Majority Voting
+
+```python
+def boyer_moore_voting(nums):
+    candidate = None
+    count = 0
+
+    # Pass 1: Find the potential majority candidate
+    for num in nums:
+        if count == 0:
+            candidate = num
+            count = 1
+        elif num == candidate:
+            count += 1
+        else:
+            count -= 1
+
+    # Pass 2: Optional verification (only needed if a majority isn't guaranteed)
+    if nums.count(candidate) > len(nums) // 2:
+        return candidate
+    return None
+```
+
+**Relevant LeetCode Questions**
+
+- Easy: [169. Majority Element](https://leetcode.com/problems/majority-element/description/)
 
 ---
 

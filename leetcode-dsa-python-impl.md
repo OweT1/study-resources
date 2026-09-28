@@ -25,6 +25,7 @@
 - [18. Intervals (Merge / Sort-based)](#18-intervals-merge--sort-based)
 - [19. Binary Indexed Tree (Fenwick Tree)](#19-binary-indexed-tree-fenwick-tree)
 - [20. Boyer-Moore Majority Voting](#20-boyer-moore-majority-voting)
+- [21. Dutch National Flag](#21-dutch-national-flag)
 - [Complexity Summary](#complexity-summary)
 - [Practice Resources](#practice-resources)
 
@@ -917,6 +918,49 @@ def boyer_moore_voting(nums):
 
 ---
 
+## 21. Dutch National Flag
+
+```python
+def dutch_national_flag(nums: list[int]) -> None:
+    """Sort an array containing only 0s, 1s and 2s in place (one pass)."""
+    low, mid, high = 0, 0, len(nums) - 1
+
+    while mid <= high:
+        if nums[mid] == 0:
+            nums[low], nums[mid] = nums[mid], nums[low]
+            low += 1
+            mid += 1
+        elif nums[mid] == 1:
+            mid += 1
+        else:  # nums[mid] == 2
+            nums[mid], nums[high] = nums[high], nums[mid]
+            high -= 1  # do NOT advance mid: the swapped-in value is unexamined
+```
+
+**Implementation notes**
+
+- Three pointers split the array into four regions at all times:
+  - `[0, low)` holds only 0s.
+  - `[low, mid)` holds only 1s.
+  - `[mid, high]` is the **unexamined** region.
+  - `(high, n)` holds only 2s.
+- When `nums[mid] == 0`, swap it into the 0s region and advance both `low` and `mid`. It is safe to advance `mid` because the value swapped in from `low` is always a 1 (or `low == mid`), which has already been classified.
+- When `nums[mid] == 2`, swap it with `nums[high]` and only shrink `high`. Do **not** advance `mid`, since the value that just arrived from `high` has not been examined yet.
+- The loop condition is `mid <= high` (not `<`), because the element at `high` is still unexamined.
+- The same idea generalises to any 3-way partition around a pivot: "less than", "equal to", and "greater than" take the place of 0, 1, and 2. This is also the partition scheme used to make quicksort robust against many duplicate keys.
+
+**Complexity**
+
+- Time: O(n), a single pass in which every step advances `mid` or shrinks `high`.
+- Space: O(1), sorted in place with three pointers.
+
+**Relevant LeetCode Questions**
+
+- Medium: [75. Sort Colors](https://leetcode.com/problems/sort-colors/)
+- Medium: [324. Wiggle Sort II](https://leetcode.com/problems/wiggle-sort-ii/)
+
+---
+
 ## Complexity Summary
 
 | #   | Pattern                   | Time                  | Space                 |
@@ -940,6 +984,8 @@ def boyer_moore_voting(nums):
 | 17  | Monotonic Stack           | O(n)                  | O(n)                  |
 | 18  | Intervals (Merge)         | O(n log n)            | O(n)                  |
 | 19  | Binary Indexed Tree       | O(log n) per op       | O(n)                  |
+| 20  | Boyer-Moore Voting        | O(n)                  | O(1)                  |
+| 21  | Dutch National Flag       | O(n)                  | O(1)                  |
 
 ---
 

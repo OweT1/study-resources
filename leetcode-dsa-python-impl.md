@@ -892,7 +892,8 @@ class BIT:
 ## 20. Boyer-Moore Majority Voting
 
 ```python
-def boyer_moore_voting(nums):
+def boyer_moore_voting(nums: list[int]) -> int | None:
+    """Return the element appearing more than n/2 times, or None."""
     candidate = None
     count = 0
 
@@ -910,11 +911,51 @@ def boyer_moore_voting(nums):
     if nums.count(candidate) > len(nums) // 2:
         return candidate
     return None
+
+
+def majority_element_ii(nums: list[int]) -> list[int]:
+    """Return all elements appearing more than n/3 times (at most 2)."""
+    cand1 = cand2 = None
+    cnt1 = cnt2 = 0
+
+    # Pass 1: Keep two candidates
+    for num in nums:
+        if num == cand1:
+            cnt1 += 1
+        elif num == cand2:
+            cnt2 += 1
+        elif cnt1 == 0:
+            cand1, cnt1 = num, 1
+        elif cnt2 == 0:
+            cand2, cnt2 = num, 1
+        else:
+            cnt1 -= 1
+            cnt2 -= 1
+
+    # Pass 2: Verification is mandatory here, since a majority isn't guaranteed
+    return [c for c in (cand1, cand2) if c is not None and nums.count(c) > len(nums) // 3]
 ```
+
+**Implementation notes**
+
+- Intuition: treat the algorithm as a "cancellation" game. Every time the current element differs from the candidate, one occurrence of the candidate is cancelled against one occurrence of something else. A true majority element appears more than all other elements combined, so it can never be fully cancelled out and must survive as the final candidate.
+- `count` is not the real frequency of `candidate`; it is the candidate's _surplus_ over the elements that have cancelled against it so far. When it drops to 0, the prefix processed so far has been fully paired off (with no majority in it), so the next element safely becomes the new candidate.
+- Pass 2 is only required when a majority element is **not guaranteed** to exist. If the problem promises one (e.g. LC 169), pass 1 alone is enough. Without a guarantee, pass 1 returns an arbitrary "last survivor" that may not be a majority at all (e.g. `[1, 2, 3]` ends with candidate `3`).
+- Order of the checks in the n/3 version matters: match an existing candidate first (`num == cand1` / `num == cand2`), and only then claim an empty slot. Otherwise a value could end up as both candidates.
+- Generalisation (Misra-Gries): to find elements appearing more than `n / k` times, keep `k - 1` candidates with counters. When a number matches none of them and there is no free slot, decrement **all** counters. There are at most `k - 1` such elements, and pass 2 is always required. For `k = 2` this is the classic algorithm above.
+- Alternatives when Boyer-Moore doesn't fit: a hash map / `Counter` is O(n) space; sorting and taking the middle element is O(n log n) but also works for `> n/2`; a bit-by-bit count works for integers; a randomized pick is O(n) expected.
+
+**Complexity**
+
+- Time: O(n) — one pass to find the candidate, plus one optional pass to verify it (`nums.count`).
+- Space: O(1) for `> n/2`; O(k) for the general `> n/k` version (O(1) for a fixed `k`, such as the n/3 case above).
 
 **Relevant LeetCode Questions**
 
 - Easy: [169. Majority Element](https://leetcode.com/problems/majority-element/description/)
+- Medium: [229. Majority Element II](https://leetcode.com/problems/majority-element-ii/)
+- Medium: [2780. Minimum Index of a Valid Split](https://leetcode.com/problems/minimum-index-of-a-valid-split/)
+- Hard: [1157. Online Majority Element In Subarray](https://leetcode.com/problems/online-majority-element-in-subarray/)
 
 ---
 

@@ -1,0 +1,6 @@
+.vscode/
+
+# Scala-related
+.bsp/
+.metals/
+.scala-build/
